@@ -28,6 +28,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Models\User.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="DataSharing\__init__.py" />
     <Compile Include="DataSharing\views.py" />
@@ -39,6 +42,7 @@
     <Folder Include="DataSharing\static\fonts\" />
     <Folder Include="DataSharing\static\scripts\" />
     <Folder Include="DataSharing\templates\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
