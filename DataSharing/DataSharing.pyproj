@@ -28,6 +28,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Models\Base.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Folder.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\User.py">
       <SubType>Code</SubType>
     </Compile>
