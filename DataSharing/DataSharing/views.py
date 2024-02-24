@@ -10,6 +10,18 @@ from MongoDbManager import MongoDbManager
 
 
 views = Blueprint( "views", __name__)
+
+@app.route('/navigate', methods=['POST'])
+def navigate():
+    destination = request.form['destination']
+    if destination == 'about':
+        return redirect('/about')
+    elif destination == 'contact':
+        return redirect('/contact')
+    else:
+        # Handle invalid destination
+        return redirect('/')
+
 @app.route('/')
 @app.route('/home')
 def home():
