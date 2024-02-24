@@ -3,17 +3,50 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import Blueprint, render_template
 from DataSharing import app
+from Models.User import User
+from MongoDbManager import MongoDbManager
 
+
+views = Blueprint( "views", __name__)
 @app.route('/')
 @app.route('/home')
 def home():
-    """Renders the home page."""
     return render_template(
         'index.html',
-        title='Home Page', # Argument that sent to the page title.
+        title='DataSharing', # Argument that sent to the page title.
         year=datetime.now().year,
+    )
+
+#@views.route('register')
+@app.route('/register', methods = ['GET', 'POST'])
+def registerpage():
+    return render_template('register.html', title = 'Register')
+
+@app.route('/registerprocess', methods = ['GET'])
+def register_process(request):
+    if request.method == 'Get':
+        username = request.form["username"]
+        f_name = request.form["f_name"]
+        l_name = request.form["l_name"]
+        email = request.form["email"]
+        password = request.form["password"]
+        confirm_password = request.form["confirm_password"]
+        
+        new_user = User(username, f_name, l_name, email, password)
+        db_Manager = MongoDbManager("DataSharing", "Users")
+        db_Manager.insert(new_user)
+        return render_template('welcome.html')
+
+@views.route('/')
+@views.route('welcome')
+@app.route('/')
+@app.route('/welcome')
+def welcome():
+    return render_template(
+        'welcome.html',
+        title='DataSharing' # Argument that sent to the page title.
     )
 
 @app.route('/contact')
