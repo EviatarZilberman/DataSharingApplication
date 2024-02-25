@@ -3,8 +3,8 @@ from Interface.IPyMongoDb import IPyMongoDb
 from bson.objectid import ObjectId
 
 class Base(IPyMongoDb):
-    m_internal_id = None
-    m_created_at = None
+    m_internal_id = ObjectId()
+    m_created_at = datetime.now()
     
     def __init__(self):
         self.m_internal_id = ObjectId()

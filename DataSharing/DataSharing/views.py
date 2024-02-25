@@ -3,10 +3,11 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
+from doctest import debug
 from flask import Blueprint, redirect, render_template, request
 from DataSharing import app
 from Models.User import User
-from MongoDbManager import MongoDbManager
+from MongoDbManager.MongoDbManager import MongoDbManager
 
 
 views = Blueprint( "views", __name__)
@@ -14,8 +15,8 @@ views = Blueprint( "views", __name__)
 @app.route('/navigate', methods=['POST'])
 def navigate():
     destination = request.form['destination']
-    if destination == 'about':
-        return redirect('/about')
+    if destination == 'register':
+        return redirect('/register')
     elif destination == 'contact':
         return redirect('/contact')
     else:
@@ -36,9 +37,9 @@ def home():
 def registerpage():
     return render_template('register.html', title = 'Register')
 
-@app.route('/registerprocess', methods = ['GET'])
-def register_process(request):
-    if request.method == 'Get':
+
+@app.route('/register_process', methods = ['POST'])
+def register_process():
         username = request.form["username"]
         f_name = request.form["f_name"]
         l_name = request.form["l_name"]
@@ -49,6 +50,7 @@ def register_process(request):
         new_user = User(username, f_name, l_name, email, password)
         db_Manager = MongoDbManager("DataSharing", "Users")
         db_Manager.insert(new_user)
+    
         return render_template('welcome.html')
 
 @views.route('/')

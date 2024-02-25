@@ -8,20 +8,28 @@
 <body>
 
     <h1>Register</h1>
-    <form action="/register_process" method="get">
+    <form action="/register_process" method="post">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br>
-        <label for="username">First name:</label><br>
-        <input type="text" id="f_name" name="username" required><br>
-        <label for="username">Last name:</label><br>
-        <input type="text" id="l_name" name="username" required><br>
-        <label for="username">Email:</label><br>
-        <input type="text" id="email" name="username" required><br>
-        <label for="username">Password:</label><br>
-        <input type="text" id="password" name="username" required><br>
-        <label for="username">Confirm password:</label><br>
-        <input type="text" id="confirm_password" name="username" required><br>
+
+        <label for="f_name">First name:</label><br>
+        <input type="text" id="f_name" name="f_name" required><br>
+
+        <label for="l_name">Last name:</label><br>
+        <input type="text" id="l_name" name="l_name" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="confirm_password">Confirm password:</label><br>
+        <input type="password" id="confirm_password" name="confirm_password" required><br>
+
         <input type="submit" value="Register">
+    </form>
+
 
     </form>
 
